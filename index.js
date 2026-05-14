@@ -32,9 +32,9 @@ async function handleMessage(event) {
   const userMessage = event.message.text;
   try {
     const response = await anthropic.messages.create({
-      model: 'model: 'claude-sonnet-4-5',
+      model: 'claude-haiku-4-5-20251001',
       max_tokens: 1024,
-      system: '你是一位專業的客服人員，請用繁體中文回答客戶的問題，回答要簡潔友善。',
+      system: '\u4f60\u662f\u4e00\u4f4d\u5c08\u696d\u7684\u5ba2\u670d\u4eba\u54e1\uff0c\u8acb\u7528\u7e41\u9ad4\u4e2d\u6587\u56de\u7b54\u5ba2\u6236\u7684\u554f\u984c\uff0c\u56de\u7b54\u8981\u7c21\u6f54\u53cb\u5584\u3002',
       messages: [{ role: 'user', content: userMessage }],
     });
     const replyText = response.content[0].text;
@@ -43,11 +43,11 @@ async function handleMessage(event) {
       messages: [{ type: 'text', text: replyText }],
     });
   } catch (err) {
-    console.error('錯誤：', err);
+    console.error('error:', err);
   }
 }
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`伺服器啟動於 port ${PORT}`);
+  console.log('Server started on port ' + PORT);
 });
