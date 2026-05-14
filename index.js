@@ -32,7 +32,7 @@ async function handleMessage(event) {
   const userMessage = event.message.text;
   try {
     const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'model: 'claude-sonnet-4-5',
       max_tokens: 1024,
       system: '你是一位專業的客服人員，請用繁體中文回答客戶的問題，回答要簡潔友善。',
       messages: [{ role: 'user', content: userMessage }],
